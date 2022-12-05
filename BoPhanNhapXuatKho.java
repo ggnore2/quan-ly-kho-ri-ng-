@@ -79,8 +79,8 @@ public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiD
             diaDiem = kho.getDiaDiem();
             khoMoi.setTenKho(kho.getTenKho());
             khoMoi.setDiaDiem(kho.getDiaDiem());
-            khoMoi.setSoLuongTongQuat(kho.getSoLuongTongQuat());
-            khoMoi.setGioiHan(kho.getSoLuongTongQuat() + giaoDichNhap.getSoLuong());
+            khoMoi.setSoLuongTongQuat(kho.getSoLuongTongQuat() + giaoDichNhap.getSoLuong());
+            khoMoi.setGioiHan(kho.getGioiHan());
             BoPhanNhapXuatKho.thayDoiKho(kho, khoMoi);
         } catch (Exception e) {
             System.out.println(e.getMessage());

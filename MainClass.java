@@ -8,11 +8,6 @@ public class MainClass {
     }
 
     public static void main(String[] args) {
-        Date d = new Date();
-        GiaoDich giaoDich = new GiaoDich("banh kem", "thuc an", 5, "mua", 5.5, d, "kho a");
-        BoPhanNhapGiaoDich.nhapGiaoDich(giaoDich);
-        ArrayList<String> thuocTinhs = taoArrayListString("ten kho");
-        ArrayList<String> giaTris = taoArrayListString("kho a");
-        BoPhanBaoCao.showGiaoDichTheoThuocTinh(thuocTinhs, giaTris);
+
     }
 }
