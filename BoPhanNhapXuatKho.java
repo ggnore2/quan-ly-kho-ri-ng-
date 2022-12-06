@@ -152,8 +152,8 @@ public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiD
             Kho khoMoi = new Kho();
             khoMoi.setTenKho(kho.getTenKho());
             khoMoi.setDiaDiem(kho.getDiaDiem());
-            khoMoi.setSoLuongTongQuat(kho.getSoLuongTongQuat());
-            khoMoi.setGioiHan(kho.getSoLuongTongQuat() - giaoDichNhap.getSoLuong());
+            khoMoi.setSoLuongTongQuat(kho.getSoLuongTongQuat() - giaoDichNhap.getSoLuong());
+            khoMoi.setGioiHan(kho.getSoLuongTongQuat());
             BoPhanNhapXuatKho.thayDoiKho(kho, khoMoi);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -181,7 +181,6 @@ public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiD
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     // nhap hang

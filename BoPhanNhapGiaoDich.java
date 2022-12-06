@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
-public class BoPhanNhapGiaoDich implements IBoPhanVoiDatabase {
+public class BoPhanNhapGiaoDich extends ABoPhanVoiDataBase implements IBoPhanVoiDatabase {
 
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
 
@@ -76,6 +76,9 @@ public class BoPhanNhapGiaoDich implements IBoPhanVoiDatabase {
 
         System.out.println("Nhap ten hang");
         String tenHang = sc.nextLine().toLowerCase().trim();
+        if (BoPhanNhapXuatKho.timHangTheoTenHang(tenHang).size() < 1) {
+            System.out.println("khong co hang");
+        }
         giaoDichMoi.setTenHang(tenHang);
 
         System.out.println("Nhap loai hang");
@@ -86,11 +89,23 @@ public class BoPhanNhapGiaoDich implements IBoPhanVoiDatabase {
         int soLuong = Integer.valueOf(sc.nextLine());
         giaoDichMoi.setSoLuong(soLuong);
 
-        ArrayList<Integer> cacKhoCoSoLuongHangPhuHop = BoPhanNhapXuatKho.timKhoVaHangTheoSoLuong(soLuong);
-        if (!(cacKhoCoSoLuongHangPhuHop.size() >= 1)) {
-            System.out.println("Khong co kho de chua");
+        ArrayList<String> thuocTinhs = BoPhanNhapGiaoDich.taoArrayListString("ten hang", "loai hang");
+        ArrayList<String> giaTris = BoPhanNhapGiaoDich.taoArrayListString(giaoDichMoi.getTenHang(),
+                String.valueOf(giaoDichMoi.getSoLuong()).toLowerCase().trim());
+
+        int indexKhoVaHangCoSoLuongHangPhuHop = BoPhanNhapXuatKho.timKhoVaHangTheoThuocTinh(thuocTinhs, giaTris);
+        if (indexKhoVaHangCoSoLuongHangPhuHop == -1) {
+            System.out.println("Khong co du de ban");
             sc.close();
             return;
+        }
+        String tenKho = " ";
+        try {
+            String khoVaHang = Files.readString(Path.of(BoPhanNhapXuatKho.khoVaHangPath))
+                    .split("\n")[indexKhoVaHangCoSoLuongHangPhuHop];
+            tenKho = KhoVaHang.fromString(khoVaHang).getTenKho();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
         giaoDichMoi.setLoaiGiaoDich("ban");
@@ -102,11 +117,6 @@ public class BoPhanNhapGiaoDich implements IBoPhanVoiDatabase {
         Date thoiDiem = new Date();
         giaoDichMoi.setThoiDiem(thoiDiem);
 
-        System.out.println("Chon mot ten kho trong cac ten kho sau");
-        BoPhanNhapXuatKho.inKhoTheoIndexes(cacKhoCoSoLuongHangPhuHop);
-
-        System.out.println("nhap ten kho");
-        String tenKho = sc.nextLine().toLowerCase().trim();
         giaoDichMoi.setTenKho(tenKho);
 
         BoPhanNhapGiaoDich.nhapGiaoDich(giaoDichMoi);
