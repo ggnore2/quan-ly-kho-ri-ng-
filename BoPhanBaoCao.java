@@ -5,6 +5,10 @@ import java.util.Arrays;
 
 public class BoPhanBaoCao {
 
+    public BoPhanBaoCao() {
+
+    }
+
     public static void showGiaoDich() {
         try {
             System.out.println(Files.readString(Path.of(ABoPhanVoiDataBase.giaoDichPath)));
@@ -15,7 +19,7 @@ public class BoPhanBaoCao {
 
     public static void showGiaoDichTheoThuocTinh(ArrayList<String> thuocTinhs, ArrayList<String> giaTris) {
         try {
-            ArrayList<Integer> listOfIndexes = BoPhanNhapGiaoDich.timGiaoDichTheoThuocTinh(thuocTinhs,
+            ArrayList<Integer> listOfIndexes = BoPhanNhapGiaoDich.timGiaoDichTheoThuocTinhReturnNhieuIndexes(thuocTinhs,
                     giaTris);
             ArrayList<String> content = new ArrayList<String>(
                     Arrays.asList(Files.readString(Path.of(ABoPhanVoiDataBase.giaoDichPath)).split("\n")));

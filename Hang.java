@@ -1,13 +1,20 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Hang implements IDonVi {
+public class Hang extends ALopDoiTuong implements ILopDoiTuong {
     private String tenHang;
     private String loaiHang;
     private int soLuong;
     private String ghiChu = " ";
 
+    @Override
+    public void xuatThongTin() {
+        System.out.printf("%s,%s,%d,%d\n", this.getTenHang(), this.getLoaiHang(), this.getSoLuong(),
+                this.getGhiChu());
+    }
+
     public Hang() {
+
     }
 
     public Hang(String tenHang, String loaiHang, int soLuong, String ghiChu) {

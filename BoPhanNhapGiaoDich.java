@@ -9,6 +9,10 @@ import java.util.Scanner;
 
 public class BoPhanNhapGiaoDich extends ABoPhanVoiDataBase implements IBoPhanVoiDatabase {
 
+    public BoPhanNhapGiaoDich() {
+
+    }
+
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
 
     public static void taoDatabases() {
@@ -136,6 +140,12 @@ public class BoPhanNhapGiaoDich extends ABoPhanVoiDataBase implements IBoPhanVoi
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void nhapCacGiaoDich(DanhSachGiaoDich danhSachGiaoDich) {
+        for (GiaoDich giaoDich : danhSachGiaoDich.danhSach) {
+            BoPhanNhapGiaoDich.nhapGiaoDich(giaoDich);
+        }
     }
 
     // thay doi giao dich
@@ -326,7 +336,69 @@ public class BoPhanNhapGiaoDich extends ABoPhanVoiDataBase implements IBoPhanVoi
         return ketQua;
     }
 
-    public static ArrayList<Integer> timGiaoDichTheoThuocTinh(ArrayList<String> tenCacThuocTinh,
+    public static int timGiaoDichTheoThuocTinh(ArrayList<String> tenCacThuocTinh,
+            ArrayList<String> giaTriCacThuocTinh) {
+        ArrayList<ArrayList<Integer>> listOfArrayList = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> ketQua = new ArrayList<Integer>();
+        try {
+            int index = 0;
+            for (String tenThuocTinh : tenCacThuocTinh) {
+                String tieuChuanHoaTenThuocTinh = tenThuocTinh.toLowerCase().trim();
+                if (tieuChuanHoaTenThuocTinh.equals("ten hang")) {
+                    String tenHang = giaTriCacThuocTinh.get(index);
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoTenHang(tenHang.toLowerCase().trim()));
+                }
+                if (tieuChuanHoaTenThuocTinh.equals("loai hang")) {
+                    String loaiHang = giaTriCacThuocTinh.get(index);
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoLoaiHang(loaiHang.toLowerCase().trim()));
+
+                }
+                if (tieuChuanHoaTenThuocTinh.equals("so luong")) {
+                    int soLuong = Integer.valueOf(giaTriCacThuocTinh.get(index));
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoSoLuong(soLuong));
+
+                }
+                if (tieuChuanHoaTenThuocTinh.equals("loai giao dich")) {
+                    String loaiGiaoDich = giaTriCacThuocTinh.get(index);
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoLoaiGiaoDich(loaiGiaoDich.toLowerCase()
+                            .trim()));
+
+                }
+                if (tieuChuanHoaTenThuocTinh.equals("gia tong the")) {
+                    double giaTongThe = Double.valueOf(giaTriCacThuocTinh.get(index));
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoGiaTongThe(giaTongThe));
+
+                }
+                if (tieuChuanHoaTenThuocTinh.equals("thoi diem")) {
+                    Date thoiDiem = dateFormat.parse(giaTriCacThuocTinh.get(index));
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoThoiDiem(thoiDiem));
+                }
+                if (tieuChuanHoaTenThuocTinh.equals("ten kho")) {
+                    String tenKho = giaTriCacThuocTinh.get(index);
+                    listOfArrayList.add(BoPhanNhapGiaoDich.timGiaoDichTheoTenKho(tenKho.toLowerCase().trim()));
+                }
+                index += 1;
+            }
+            if (!(listOfArrayList.size() >= 1)) {
+                return -1;
+            }
+            for (int i : listOfArrayList.get(0)) {
+                ketQua.add(i);
+            }
+            for (ArrayList<Integer> arrayList : listOfArrayList) {
+                ketQua.retainAll(arrayList);
+            }
+            if (ketQua.size() > 0) {
+                System.out.println("khong co giao dich");
+                return -1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return ketQua.get(0);
+    }
+
+    public static ArrayList<Integer> timGiaoDichTheoThuocTinhReturnNhieuIndexes(ArrayList<String> tenCacThuocTinh,
             ArrayList<String> giaTriCacThuocTinh) {
         ArrayList<ArrayList<Integer>> listOfArrayList = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> ketQua = new ArrayList<Integer>();
@@ -383,5 +455,4 @@ public class BoPhanNhapGiaoDich extends ABoPhanVoiDataBase implements IBoPhanVoi
         }
         return ketQua;
     }
-
 }

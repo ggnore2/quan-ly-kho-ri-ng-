@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiDatabase {
+    public BoPhanNhapXuatKho() {
+
+    }
+
     public static void taoDatabases() {
 
         // tao hang.txt
@@ -193,6 +197,12 @@ public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiD
         }
     }
 
+    public void nhapCacHang(DanhSachHang danhSachHang) {
+        for (Hang hang : danhSachHang.danhSach) {
+            BoPhanNhapXuatKho.nhapHang(hang);
+        }
+    }
+
     // thay doi hang
     public static void thayDoiHang(Hang hangCu, Hang hangMoi) {
         try {
@@ -259,6 +269,12 @@ public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiD
         }
     }
 
+    public void nhapCacKho(DanhSachKho danhSachKho) {
+        for (Kho kho : danhSachKho.danhSach) {
+            BoPhanNhapXuatKho.nhapKho(kho);
+        }
+    }
+
     // thay doi kho
     public static void thayDoiKho(Kho khoCu, Kho khoMoi) {
         try {
@@ -322,6 +338,12 @@ public class BoPhanNhapXuatKho extends ABoPhanVoiDataBase implements IBoPhanVoiD
                     StandardOpenOption.APPEND);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void nhapCacKhoVaHang(DanhSachKhoVaHang danhSachKhoVaHang) {
+        for (KhoVaHang khoVaHang : danhSachKhoVaHang.danhSach) {
+            BoPhanNhapXuatKho.nhapKhoVaHang(khoVaHang);
         }
     }
 

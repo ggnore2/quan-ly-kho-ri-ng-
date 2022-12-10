@@ -1,11 +1,17 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Kho implements IDonVi {
+public class Kho extends ALopDoiTuong implements ILopDoiTuong {
     private String tenKho;
     private String diaDiem;
     private int soLuongTongQuat;
     private int gioiHan;
+
+    @Override
+    public void xuatThongTin() {
+        System.out.printf("%s,%s,%d,%d\n", this.getTenKho(), this.getDiaDiem(), this.getSoLuongTongQuat(),
+                this.getGioiHan());
+    }
 
     public Kho() {
 

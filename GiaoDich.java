@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public class GiaoDich {
+public class GiaoDich extends ALopDoiTuong implements ILopDoiTuong {
     private String tenHang;
     private String loaiHang;
     private int soLuong;
@@ -10,6 +10,12 @@ public class GiaoDich {
     private double giaTongThe;
     private Date thoiDiem;
     private String tenKho;
+
+    @Override
+    public void xuatThongTin() {
+        System.out.printf("%s,%s,%d,%s,%f,%s,%s\n", this.getTenHang(), this.getLoaiHang(),
+                this.getSoLuong(), this.getGiaTongThe(), this.getThoiDiem().toString(), this.getTenKho());
+    }
 
     // constructor
     public GiaoDich() {
