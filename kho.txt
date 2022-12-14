@@ -1,1 +1,2 @@
 ten kho,dia diem,so luong tong quat,gioi han
+kho a,dia diem a,25,100

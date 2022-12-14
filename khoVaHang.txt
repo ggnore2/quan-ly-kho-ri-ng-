@@ -1,1 +1,6 @@
 ten kho,dia diem,ten hang,loai hang,so luong
+kho a,dia diem a,banh kem,thuc an,5
+kho a,dia diem a,keo,thuc an,5
+kho a,dia diem a,quat,do dung,5
+kho a,dia diem a,giuong,do dung,5
+kho a,dia diem a,mi an lien,thuc an,5

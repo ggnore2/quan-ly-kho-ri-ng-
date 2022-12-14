@@ -1,1 +1,6 @@
 ten hang,loai hang,so luong,ghi chu
+banh kem,thuc an,5, 
+keo,thuc an,5, 
+quat,do dung,5, 
+giuong,do dung,5, 
+mi an lien,thuc an,5, 

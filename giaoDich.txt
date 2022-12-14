@@ -1,1 +1,6 @@
 ten hang,loai hang,so luong,loai giao dich,gia tong the,thoi diem,ten kho
+banh kem,thuc an,5,mua,5.000000,Wed Dec 14 22:52:31 ICT 2022,kho a
+keo,thuc an,5,mua,5.000000,Wed Dec 14 22:52:31 ICT 2022,kho a
+quat,do dung,5,mua,5.000000,Wed Dec 14 22:52:31 ICT 2022,kho a
+giuong,do dung,5,mua,5.000000,Wed Dec 14 22:52:31 ICT 2022,kho a
+mi an lien,thuc an,5,mua,5.000000,Wed Dec 14 22:52:31 ICT 2022,kho a
